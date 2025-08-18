@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "/gen-common";
+
+package common;
+
+import "google/protobuf/timestamp.proto";
+
+// Общий тип пользователя
+message User {
+  int64 id = 1;
+  string name = 2;
+  string bio = 3;
+  string photo = 4;
+  string status = 5;
+  google.protobuf.Timestamp last_seen = 6;
+}
+
+// Ответ-статус для операций
+message StatusResponse {
+  bool success = 1;
+  string error = 2;
+}
