@@ -1,7 +1,7 @@
 package chatClient
 
 import (
-	gen_chat "github.com/danilkompaniets/go-chat/gen/gen-chat"
+	gen_chat "github.com/danilkompaniets/go-chat-common/gen/gen-chat"
 	"google.golang.org/grpc"
 	"log"
 	"time"

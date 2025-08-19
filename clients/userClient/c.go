@@ -1,7 +1,7 @@
 package userClient
 
 import (
-	gen_user "github.com/danilkompaniets/go-chat/gen/gen-user"
+	gen_user "github.com/danilkompaniets/go-chat-common/gen/gen-user"
 	"google.golang.org/grpc"
 	"log"
 	"time"
