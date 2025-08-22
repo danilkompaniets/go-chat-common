@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.7
 // 	protoc        v5.29.3
-// source: auth.proto
+// source: auth/auth.proto
 
-package gen_auth
+package auth
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -30,7 +30,7 @@ type ValidateTokenRequest struct {
 
 func (x *ValidateTokenRequest) Reset() {
 	*x = ValidateTokenRequest{}
-	mi := &file_auth_proto_msgTypes[0]
+	mi := &file_auth_auth_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *ValidateTokenRequest) String() string {
 func (*ValidateTokenRequest) ProtoMessage() {}
 
 func (x *ValidateTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[0]
+	mi := &file_auth_auth_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *ValidateTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTokenRequest.ProtoReflect.Descriptor instead.
 func (*ValidateTokenRequest) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{0}
+	return file_auth_auth_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ValidateTokenRequest) GetToken() string {
@@ -75,7 +75,7 @@ type ValidateTokenResponse struct {
 
 func (x *ValidateTokenResponse) Reset() {
 	*x = ValidateTokenResponse{}
-	mi := &file_auth_proto_msgTypes[1]
+	mi := &file_auth_auth_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -87,7 +87,7 @@ func (x *ValidateTokenResponse) String() string {
 func (*ValidateTokenResponse) ProtoMessage() {}
 
 func (x *ValidateTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[1]
+	mi := &file_auth_auth_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -100,7 +100,7 @@ func (x *ValidateTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTokenResponse.ProtoReflect.Descriptor instead.
 func (*ValidateTokenResponse) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{1}
+	return file_auth_auth_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ValidateTokenResponse) GetValid() bool {
@@ -117,38 +117,37 @@ func (x *ValidateTokenResponse) GetUserId() int64 {
 	return 0
 }
 
-var File_auth_proto protoreflect.FileDescriptor
+var File_auth_auth_proto protoreflect.FileDescriptor
 
-const file_auth_proto_rawDesc = "" +
+const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
-	"\n" +
-	"auth.proto\x12\x04auth\",\n" +
+	"\x0fauth/auth.proto\x12\x04auth\",\n" +
 	"\x14ValidateTokenRequest\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\"E\n" +
 	"\x15ValidateTokenResponse\x12\x14\n" +
 	"\x05valid\x18\x01 \x01(\bR\x05valid\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\x03R\x06userId2W\n" +
 	"\vAuthService\x12H\n" +
-	"\rValidateToken\x12\x1a.auth.ValidateTokenRequest\x1a\x1b.auth.ValidateTokenResponseB\vZ\t/gen-authb\x06proto3"
+	"\rValidateToken\x12\x1a.auth.ValidateTokenRequest\x1a\x1b.auth.ValidateTokenResponseB4Z2github.com/danilkompaniets/go-chat-common/gen/authb\x06proto3"
 
 var (
-	file_auth_proto_rawDescOnce sync.Once
-	file_auth_proto_rawDescData []byte
+	file_auth_auth_proto_rawDescOnce sync.Once
+	file_auth_auth_proto_rawDescData []byte
 )
 
-func file_auth_proto_rawDescGZIP() []byte {
-	file_auth_proto_rawDescOnce.Do(func() {
-		file_auth_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_auth_proto_rawDesc), len(file_auth_proto_rawDesc)))
+func file_auth_auth_proto_rawDescGZIP() []byte {
+	file_auth_auth_proto_rawDescOnce.Do(func() {
+		file_auth_auth_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)))
 	})
-	return file_auth_proto_rawDescData
+	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_auth_proto_goTypes = []any{
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_auth_auth_proto_goTypes = []any{
 	(*ValidateTokenRequest)(nil),  // 0: auth.ValidateTokenRequest
 	(*ValidateTokenResponse)(nil), // 1: auth.ValidateTokenResponse
 }
-var file_auth_proto_depIdxs = []int32{
+var file_auth_auth_proto_depIdxs = []int32{
 	0, // 0: auth.AuthService.ValidateToken:input_type -> auth.ValidateTokenRequest
 	1, // 1: auth.AuthService.ValidateToken:output_type -> auth.ValidateTokenResponse
 	1, // [1:2] is the sub-list for method output_type
@@ -158,26 +157,26 @@ var file_auth_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_auth_proto_init() }
-func file_auth_proto_init() {
-	if File_auth_proto != nil {
+func init() { file_auth_auth_proto_init() }
+func file_auth_auth_proto_init() {
+	if File_auth_auth_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_proto_rawDesc), len(file_auth_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_auth_proto_goTypes,
-		DependencyIndexes: file_auth_proto_depIdxs,
-		MessageInfos:      file_auth_proto_msgTypes,
+		GoTypes:           file_auth_auth_proto_goTypes,
+		DependencyIndexes: file_auth_auth_proto_depIdxs,
+		MessageInfos:      file_auth_auth_proto_msgTypes,
 	}.Build()
-	File_auth_proto = out.File
-	file_auth_proto_goTypes = nil
-	file_auth_proto_depIdxs = nil
+	File_auth_auth_proto = out.File
+	file_auth_auth_proto_goTypes = nil
+	file_auth_auth_proto_depIdxs = nil
 }

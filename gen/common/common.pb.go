@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.7
 // 	protoc        v5.29.3
-// source: common.proto
+// source: common/common.proto
 
-package gen_common
+package common
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -33,7 +33,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_common_proto_msgTypes[0]
+	mi := &file_common_common_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +45,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[0]
+	mi := &file_common_common_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{0}
+	return file_common_common_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *User) GetId() int64 {
@@ -93,7 +93,7 @@ type StatusResponse struct {
 
 func (x *StatusResponse) Reset() {
 	*x = StatusResponse{}
-	mi := &file_common_proto_msgTypes[1]
+	mi := &file_common_common_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -105,7 +105,7 @@ func (x *StatusResponse) String() string {
 func (*StatusResponse) ProtoMessage() {}
 
 func (x *StatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[1]
+	mi := &file_common_common_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -118,7 +118,7 @@ func (x *StatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatusResponse.ProtoReflect.Descriptor instead.
 func (*StatusResponse) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{1}
+	return file_common_common_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *StatusResponse) GetSuccess() bool {
@@ -135,37 +135,37 @@ func (x *StatusResponse) GetError() string {
 	return ""
 }
 
-var File_common_proto protoreflect.FileDescriptor
+var File_common_common_proto protoreflect.FileDescriptor
 
-const file_common_proto_rawDesc = "" +
+const file_common_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\x06common\"<\n" +
+	"\x13common/common.proto\x12\x06common\"<\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
 	"\x03bio\x18\x03 \x01(\tR\x03bio\"@\n" +
 	"\x0eStatusResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x14\n" +
-	"\x05error\x18\x02 \x01(\tR\x05errorB\rZ\v/gen-commonb\x06proto3"
+	"\x05error\x18\x02 \x01(\tR\x05errorB6Z4github.com/danilkompaniets/go-chat-common/gen/commonb\x06proto3"
 
 var (
-	file_common_proto_rawDescOnce sync.Once
-	file_common_proto_rawDescData []byte
+	file_common_common_proto_rawDescOnce sync.Once
+	file_common_common_proto_rawDescData []byte
 )
 
-func file_common_proto_rawDescGZIP() []byte {
-	file_common_proto_rawDescOnce.Do(func() {
-		file_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_common_proto_rawDesc), len(file_common_proto_rawDesc)))
+func file_common_common_proto_rawDescGZIP() []byte {
+	file_common_common_proto_rawDescOnce.Do(func() {
+		file_common_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_common_common_proto_rawDesc), len(file_common_common_proto_rawDesc)))
 	})
-	return file_common_proto_rawDescData
+	return file_common_common_proto_rawDescData
 }
 
-var file_common_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_common_proto_goTypes = []any{
+var file_common_common_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_common_common_proto_goTypes = []any{
 	(*User)(nil),           // 0: common.User
 	(*StatusResponse)(nil), // 1: common.StatusResponse
 }
-var file_common_proto_depIdxs = []int32{
+var file_common_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -173,26 +173,26 @@ var file_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_common_proto_init() }
-func file_common_proto_init() {
-	if File_common_proto != nil {
+func init() { file_common_common_proto_init() }
+func file_common_common_proto_init() {
+	if File_common_common_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_common_proto_rawDesc), len(file_common_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_common_common_proto_rawDesc), len(file_common_common_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_common_proto_goTypes,
-		DependencyIndexes: file_common_proto_depIdxs,
-		MessageInfos:      file_common_proto_msgTypes,
+		GoTypes:           file_common_common_proto_goTypes,
+		DependencyIndexes: file_common_common_proto_depIdxs,
+		MessageInfos:      file_common_common_proto_msgTypes,
 	}.Build()
-	File_common_proto = out.File
-	file_common_proto_goTypes = nil
-	file_common_proto_depIdxs = nil
+	File_common_common_proto = out.File
+	file_common_common_proto_goTypes = nil
+	file_common_common_proto_depIdxs = nil
 }
