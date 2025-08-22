@@ -9,7 +9,6 @@ package gen_common
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -28,9 +27,6 @@ type User struct {
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Bio           string                 `protobuf:"bytes,3,opt,name=bio,proto3" json:"bio,omitempty"`
-	Photo         string                 `protobuf:"bytes,4,opt,name=photo,proto3" json:"photo,omitempty"`
-	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
-	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -84,27 +80,6 @@ func (x *User) GetBio() string {
 		return x.Bio
 	}
 	return ""
-}
-
-func (x *User) GetPhoto() string {
-	if x != nil {
-		return x.Photo
-	}
-	return ""
-}
-
-func (x *User) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-func (x *User) GetLastSeen() *timestamppb.Timestamp {
-	if x != nil {
-		return x.LastSeen
-	}
-	return nil
 }
 
 // Ответ-статус для операций
@@ -164,14 +139,11 @@ var File_common_proto protoreflect.FileDescriptor
 
 const file_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\x06common\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa3\x01\n" +
+	"\fcommon.proto\x12\x06common\"<\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
-	"\x03bio\x18\x03 \x01(\tR\x03bio\x12\x14\n" +
-	"\x05photo\x18\x04 \x01(\tR\x05photo\x12\x16\n" +
-	"\x06status\x18\x05 \x01(\tR\x06status\x127\n" +
-	"\tlast_seen\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\"@\n" +
+	"\x03bio\x18\x03 \x01(\tR\x03bio\"@\n" +
 	"\x0eStatusResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x14\n" +
 	"\x05error\x18\x02 \x01(\tR\x05errorB\rZ\v/gen-commonb\x06proto3"
@@ -190,17 +162,15 @@ func file_common_proto_rawDescGZIP() []byte {
 
 var file_common_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_common_proto_goTypes = []any{
-	(*User)(nil),                  // 0: common.User
-	(*StatusResponse)(nil),        // 1: common.StatusResponse
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*User)(nil),           // 0: common.User
+	(*StatusResponse)(nil), // 1: common.StatusResponse
 }
 var file_common_proto_depIdxs = []int32{
-	2, // 0: common.User.last_seen:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_common_proto_init() }

@@ -8,7 +8,6 @@ package gen_user
 
 import (
 	gen_common "/gen-common"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -972,7 +971,7 @@ var File_user_proto protoreflect.FileDescriptor
 const file_user_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"user.proto\x12\x04user\x1a\fcommon.proto\x1a\x1cgoogle/api/annotations.proto\")\n" +
+	"user.proto\x12\x04user\x1a\fcommon.proto\")\n" +
 	"\x0eGetUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"3\n" +
 	"\x0fGetUserResponse\x12 \n" +
@@ -1024,25 +1023,25 @@ const file_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
 	"\x03bio\x18\x03 \x01(\tR\x03bio\"\x14\n" +
-	"\x12CreateUserResponse2\x8c\r\n" +
-	"\vUserService\x12Y\n" +
+	"\x12CreateUserResponse2\xd4\a\n" +
+	"\vUserService\x12?\n" +
 	"\n" +
-	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\"\x18\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/api/v1/users\x12[\n" +
-	"\vGetUserByID\x12\x14.user.GetUserRequest\x1a\x15.user.GetUserResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/api/v1/users/{user_id}\x12q\n" +
-	"\vSearchUsers\x12\x18.user.SearchUsersRequest\x1a\x19.user.SearchUsersResponse\"-\x82\xd3\xe4\x93\x02'Z\x0f\x12\r/api/v1/users\x12\x14/api/v1/users/search\x12l\n" +
-	"\rGetUsersByIDs\x12\x1a.user.BatchGetUsersRequest\x1a\x1b.user.BatchGetUsersResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/api/v1/users/batch_get\x12g\n" +
+	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12:\n" +
+	"\vGetUserByID\x12\x14.user.GetUserRequest\x1a\x15.user.GetUserResponse\x12B\n" +
+	"\vSearchUsers\x12\x18.user.SearchUsersRequest\x1a\x19.user.SearchUsersResponse\x12H\n" +
+	"\rGetUsersByIDs\x12\x1a.user.BatchGetUsersRequest\x1a\x1b.user.BatchGetUsersResponse\x12;\n" +
 	"\n" +
-	"UpdateName\x12\x17.user.UpdateNameRequest\x1a\x14.user.UpdateResponse\"*\x82\xd3\xe4\x93\x02$:\x04name2\x1c/api/v1/users/{user_id}/name\x12c\n" +
-	"\tUpdateBio\x12\x16.user.UpdateBioRequest\x1a\x14.user.UpdateResponse\"(\x82\xd3\xe4\x93\x02\":\x03bio2\x1b/api/v1/users/{user_id}/bio\x12k\n" +
-	"\vUpdatePhoto\x12\x18.user.UpdatePhotoRequest\x1a\x14.user.UpdateResponse\",\x82\xd3\xe4\x93\x02&:\x05photo2\x1d/api/v1/users/{user_id}/photo\x12\x83\x01\n" +
-	"\x11SendFriendRequest\x12\x1e.user.SendFriendRequestRequest\x1a\x14.user.UpdateResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/api/v1/users/{from_user_id}/friends/requests\x12\x96\x01\n" +
-	"\x13AcceptFriendRequest\x12 .user.AcceptFriendRequestRequest\x1a\x14.user.UpdateResponse\"G\x82\xd3\xe4\x93\x02A:\x01*\"</api/v1/users/{user_id}/friends/requests/{request_id}/accept\x12\x99\x01\n" +
-	"\x14DeclineFriendRequest\x12!.user.DeclineFriendRequestRequest\x1a\x14.user.UpdateResponse\"H\x82\xd3\xe4\x93\x02B:\x01*\"=/api/v1/users/{user_id}/friends/requests/{request_id}/decline\x12t\n" +
-	"\fRemoveFriend\x12\x19.user.RemoveFriendRequest\x1a\x14.user.UpdateResponse\"3\x82\xd3\xe4\x93\x02-*+/api/v1/users/{user_id}/friends/{friend_id}\x12h\n" +
+	"UpdateName\x12\x17.user.UpdateNameRequest\x1a\x14.user.UpdateResponse\x129\n" +
+	"\tUpdateBio\x12\x16.user.UpdateBioRequest\x1a\x14.user.UpdateResponse\x12=\n" +
+	"\vUpdatePhoto\x12\x18.user.UpdatePhotoRequest\x1a\x14.user.UpdateResponse\x12I\n" +
+	"\x11SendFriendRequest\x12\x1e.user.SendFriendRequestRequest\x1a\x14.user.UpdateResponse\x12M\n" +
+	"\x13AcceptFriendRequest\x12 .user.AcceptFriendRequestRequest\x1a\x14.user.UpdateResponse\x12O\n" +
+	"\x14DeclineFriendRequest\x12!.user.DeclineFriendRequestRequest\x1a\x14.user.UpdateResponse\x12?\n" +
+	"\fRemoveFriend\x12\x19.user.RemoveFriendRequest\x1a\x14.user.UpdateResponse\x12?\n" +
 	"\n" +
-	"GetFriends\x12\x17.user.GetFriendsRequest\x1a\x18.user.GetFriendsResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/users/{user_id}/friends\x12\x85\x01\n" +
-	"\x13GetIncomingRequests\x12\x18.user.GetRequestsRequest\x1a\x19.user.GetRequestsResponse\"9\x82\xd3\xe4\x93\x023\x121/api/v1/users/{user_id}/friends/requests/incoming\x12\x85\x01\n" +
-	"\x13GetOutgoingRequests\x12\x18.user.GetRequestsRequest\x1a\x19.user.GetRequestsResponse\"9\x82\xd3\xe4\x93\x023\x121/api/v1/users/{user_id}/friends/requests/outgoingB\vZ\t/gen-userb\x06proto3"
+	"GetFriends\x12\x17.user.GetFriendsRequest\x1a\x18.user.GetFriendsResponse\x12J\n" +
+	"\x13GetIncomingRequests\x12\x18.user.GetRequestsRequest\x1a\x19.user.GetRequestsResponse\x12J\n" +
+	"\x13GetOutgoingRequests\x12\x18.user.GetRequestsRequest\x1a\x19.user.GetRequestsResponseB\vZ\t/gen-userb\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once

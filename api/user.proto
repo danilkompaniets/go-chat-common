@@ -3,106 +3,27 @@ syntax = "proto3";
 package user;
 
 option go_package = "/gen-user";
-
 import "common.proto";
-import "google/api/annotations.proto";
 
 service UserService {
-  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/users"
-      body: "*"
-    };
-  }
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
 
-  rpc GetUserByID(GetUserRequest) returns (GetUserResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/users/{user_id}"
-    };
-  }
+  rpc GetUserByID(GetUserRequest) returns (GetUserResponse);
 
-  rpc SearchUsers(SearchUsersRequest) returns (SearchUsersResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/users/search"
-      // параметр query в query string, например: /api/v1/users/search?query=abc
-      additional_bindings: {
-        get: "/api/v1/users"
-      }
-    };
-  }
+  rpc SearchUsers(SearchUsersRequest) returns (SearchUsersResponse);
+  rpc GetUsersByIDs(BatchGetUsersRequest) returns (BatchGetUsersResponse);
 
-  rpc GetUsersByIDs(BatchGetUsersRequest) returns (BatchGetUsersResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/users/batch_get"
-      body: "*"
-    };
-  }
+  rpc UpdateName(UpdateNameRequest) returns (UpdateResponse);
+  rpc UpdateBio(UpdateBioRequest) returns (UpdateResponse);
+  rpc UpdatePhoto(UpdatePhotoRequest) returns (UpdateResponse);
+  rpc SendFriendRequest(SendFriendRequestRequest) returns (UpdateResponse);
 
-  rpc UpdateName(UpdateNameRequest) returns (UpdateResponse) {
-    option (google.api.http) = {
-      patch: "/api/v1/users/{user_id}/name"
-      body: "name"
-    };
-  }
-
-  rpc UpdateBio(UpdateBioRequest) returns (UpdateResponse) {
-    option (google.api.http) = {
-      patch: "/api/v1/users/{user_id}/bio"
-      body: "bio"
-    };
-  }
-
-  rpc UpdatePhoto(UpdatePhotoRequest) returns (UpdateResponse) {
-    option (google.api.http) = {
-      patch: "/api/v1/users/{user_id}/photo"
-      body: "photo"
-    };
-  }
-
-  rpc SendFriendRequest(SendFriendRequestRequest) returns (UpdateResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/users/{from_user_id}/friends/requests"
-      body: "*"
-    };
-  }
-
-  rpc AcceptFriendRequest(AcceptFriendRequestRequest) returns (UpdateResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/users/{user_id}/friends/requests/{request_id}/accept"
-      body: "*"
-    };
-  }
-
-  rpc DeclineFriendRequest(DeclineFriendRequestRequest) returns (UpdateResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/users/{user_id}/friends/requests/{request_id}/decline"
-      body: "*"
-    };
-  }
-
-  rpc RemoveFriend(RemoveFriendRequest) returns (UpdateResponse) {
-    option (google.api.http) = {
-      delete: "/api/v1/users/{user_id}/friends/{friend_id}"
-    };
-  }
-
-  rpc GetFriends(GetFriendsRequest) returns (GetFriendsResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/users/{user_id}/friends"
-    };
-  }
-
-  rpc GetIncomingRequests(GetRequestsRequest) returns (GetRequestsResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/users/{user_id}/friends/requests/incoming"
-    };
-  }
-
-  rpc GetOutgoingRequests(GetRequestsRequest) returns (GetRequestsResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/users/{user_id}/friends/requests/outgoing"
-    };
-  }
+  rpc AcceptFriendRequest(AcceptFriendRequestRequest) returns (UpdateResponse);
+  rpc DeclineFriendRequest(DeclineFriendRequestRequest) returns (UpdateResponse);
+  rpc RemoveFriend(RemoveFriendRequest) returns (UpdateResponse);
+  rpc GetFriends(GetFriendsRequest) returns (GetFriendsResponse);
+  rpc GetIncomingRequests(GetRequestsRequest) returns (GetRequestsResponse);
+  rpc GetOutgoingRequests(GetRequestsRequest) returns (GetRequestsResponse);
 }
 
 message GetUserRequest {
