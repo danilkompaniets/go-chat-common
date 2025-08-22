@@ -25,7 +25,6 @@ const (
 	UserService_GetUsersByIDs_FullMethodName        = "/user.UserService/GetUsersByIDs"
 	UserService_UpdateName_FullMethodName           = "/user.UserService/UpdateName"
 	UserService_UpdateBio_FullMethodName            = "/user.UserService/UpdateBio"
-	UserService_UpdatePhoto_FullMethodName          = "/user.UserService/UpdatePhoto"
 	UserService_SendFriendRequest_FullMethodName    = "/user.UserService/SendFriendRequest"
 	UserService_AcceptFriendRequest_FullMethodName  = "/user.UserService/AcceptFriendRequest"
 	UserService_DeclineFriendRequest_FullMethodName = "/user.UserService/DeclineFriendRequest"
@@ -45,7 +44,6 @@ type UserServiceClient interface {
 	GetUsersByIDs(ctx context.Context, in *BatchGetUsersRequest, opts ...grpc.CallOption) (*BatchGetUsersResponse, error)
 	UpdateName(ctx context.Context, in *UpdateNameRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	UpdateBio(ctx context.Context, in *UpdateBioRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
-	UpdatePhoto(ctx context.Context, in *UpdatePhotoRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	SendFriendRequest(ctx context.Context, in *SendFriendRequestRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	AcceptFriendRequest(ctx context.Context, in *AcceptFriendRequestRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	DeclineFriendRequest(ctx context.Context, in *DeclineFriendRequestRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
@@ -117,16 +115,6 @@ func (c *userServiceClient) UpdateBio(ctx context.Context, in *UpdateBioRequest,
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateResponse)
 	err := c.cc.Invoke(ctx, UserService_UpdateBio_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) UpdatePhoto(ctx context.Context, in *UpdatePhotoRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateResponse)
-	err := c.cc.Invoke(ctx, UserService_UpdatePhoto_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -213,7 +201,6 @@ type UserServiceServer interface {
 	GetUsersByIDs(context.Context, *BatchGetUsersRequest) (*BatchGetUsersResponse, error)
 	UpdateName(context.Context, *UpdateNameRequest) (*UpdateResponse, error)
 	UpdateBio(context.Context, *UpdateBioRequest) (*UpdateResponse, error)
-	UpdatePhoto(context.Context, *UpdatePhotoRequest) (*UpdateResponse, error)
 	SendFriendRequest(context.Context, *SendFriendRequestRequest) (*UpdateResponse, error)
 	AcceptFriendRequest(context.Context, *AcceptFriendRequestRequest) (*UpdateResponse, error)
 	DeclineFriendRequest(context.Context, *DeclineFriendRequestRequest) (*UpdateResponse, error)
@@ -248,9 +235,6 @@ func (UnimplementedUserServiceServer) UpdateName(context.Context, *UpdateNameReq
 }
 func (UnimplementedUserServiceServer) UpdateBio(context.Context, *UpdateBioRequest) (*UpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateBio not implemented")
-}
-func (UnimplementedUserServiceServer) UpdatePhoto(context.Context, *UpdatePhotoRequest) (*UpdateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdatePhoto not implemented")
 }
 func (UnimplementedUserServiceServer) SendFriendRequest(context.Context, *SendFriendRequestRequest) (*UpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendFriendRequest not implemented")
@@ -398,24 +382,6 @@ func _UserService_UpdateBio_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).UpdateBio(ctx, req.(*UpdateBioRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_UpdatePhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdatePhotoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).UpdatePhoto(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_UpdatePhoto_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).UpdatePhoto(ctx, req.(*UpdatePhotoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -576,10 +542,6 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateBio",
 			Handler:    _UserService_UpdateBio_Handler,
-		},
-		{
-			MethodName: "UpdatePhoto",
-			Handler:    _UserService_UpdatePhoto_Handler,
 		},
 		{
 			MethodName: "SendFriendRequest",

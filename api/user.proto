@@ -4,6 +4,8 @@ package user;
 
 option go_package = "/gen-user";
 import "common.proto";
+import "google/protobuf/timestamp.proto";
+
 
 service UserService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
@@ -15,7 +17,6 @@ service UserService {
 
   rpc UpdateName(UpdateNameRequest) returns (UpdateResponse);
   rpc UpdateBio(UpdateBioRequest) returns (UpdateResponse);
-  rpc UpdatePhoto(UpdatePhotoRequest) returns (UpdateResponse);
   rpc SendFriendRequest(SendFriendRequestRequest) returns (UpdateResponse);
 
   rpc AcceptFriendRequest(AcceptFriendRequestRequest) returns (UpdateResponse);
@@ -60,11 +61,6 @@ message UpdateBioRequest {
   string bio = 2;
 }
 
-message UpdatePhotoRequest {
-  int64 user_id = 1;
-  string photo = 2;
-}
-
 message UpdateResponse {
   bool success = 1;
 }
@@ -99,6 +95,15 @@ message GetFriendsResponse {
 
 message GetRequestsRequest {
   int64 user_id = 1;
+}
+
+message FriendRequestInfo {
+  int64 request_id = 1;
+  string request_status = 2;
+  google.protobuf.Timestamp created_at = 3;
+  int64 user_id = 4;
+  string user_name = 5;
+  string user_bio = 6;
 }
 
 message GetRequestsResponse {
