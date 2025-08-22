@@ -107,11 +107,10 @@ message FriendRequestInfo {
 }
 
 message GetRequestsResponse {
-  repeated common.User users = 1;
+  repeated FriendRequestInfo requests = 1;
 }
-
+g
 message CreateUserRequest {
-  int64 id = 1;
   string name = 2;
   string bio = 3;
 }
