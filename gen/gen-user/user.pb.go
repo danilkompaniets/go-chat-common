@@ -861,7 +861,7 @@ func (x *FriendRequestInfo) GetUserBio() string {
 
 type GetRequestsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Users         []*gen_common.User     `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	Requests      []*FriendRequestInfo   `protobuf:"bytes,1,rep,name=requests,proto3" json:"requests,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -896,16 +896,15 @@ func (*GetRequestsResponse) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *GetRequestsResponse) GetUsers() []*gen_common.User {
+func (x *GetRequestsResponse) GetRequests() []*FriendRequestInfo {
 	if x != nil {
-		return x.Users
+		return x.Requests
 	}
 	return nil
 }
 
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Bio           string                 `protobuf:"bytes,3,opt,name=bio,proto3" json:"bio,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -940,13 +939,6 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *CreateUserRequest) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
 }
 
 func (x *CreateUserRequest) GetName() string {
@@ -1055,11 +1047,10 @@ const file_user_proto_rawDesc = "" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x17\n" +
 	"\auser_id\x18\x04 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tuser_name\x18\x05 \x01(\tR\buserName\x12\x19\n" +
-	"\buser_bio\x18\x06 \x01(\tR\auserBio\"9\n" +
-	"\x13GetRequestsResponse\x12\"\n" +
-	"\x05users\x18\x01 \x03(\v2\f.common.UserR\x05users\"I\n" +
-	"\x11CreateUserRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\buser_bio\x18\x06 \x01(\tR\auserBio\"J\n" +
+	"\x13GetRequestsResponse\x123\n" +
+	"\brequests\x18\x01 \x03(\v2\x17.user.FriendRequestInfoR\brequests\"9\n" +
+	"\x11CreateUserRequest\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
 	"\x03bio\x18\x03 \x01(\tR\x03bio\"\x14\n" +
 	"\x12CreateUserResponse2\x95\a\n" +
@@ -1124,7 +1115,7 @@ var file_user_proto_depIdxs = []int32{
 	20, // 2: user.BatchGetUsersResponse.users:type_name -> common.User
 	20, // 3: user.GetFriendsResponse.friends:type_name -> common.User
 	21, // 4: user.FriendRequestInfo.created_at:type_name -> google.protobuf.Timestamp
-	20, // 5: user.GetRequestsResponse.users:type_name -> common.User
+	16, // 5: user.GetRequestsResponse.requests:type_name -> user.FriendRequestInfo
 	18, // 6: user.UserService.CreateUser:input_type -> user.CreateUserRequest
 	0,  // 7: user.UserService.GetUserByID:input_type -> user.GetUserRequest
 	2,  // 8: user.UserService.SearchUsers:input_type -> user.SearchUsersRequest

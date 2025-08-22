@@ -109,7 +109,7 @@ message FriendRequestInfo {
 message GetRequestsResponse {
   repeated FriendRequestInfo requests = 1;
 }
-g
+
 message CreateUserRequest {
   string name = 2;
   string bio = 3;
