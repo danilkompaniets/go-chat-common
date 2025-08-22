@@ -2,7 +2,15 @@ OPENAPI_DIR = gen/openapi
 SERVICES = auth chat user common
 
 services-gen:
-	protoc -I=api --go_out=gen --relative --go-grpc_out=gen --grpc-gateway_out=gen ./api/auth/auth.proto ./api/chat/chat.proto ./api/common/common.proto ./api/user/user.proto
+	protoc \
+	  -I=api \
+	  --go_out=gen --go_opt=paths=source_relative \
+	  --go-grpc_out=gen --go-grpc_opt=paths=source_relative \
+	  --grpc-gateway_out=gen --grpc-gateway_opt=paths=source_relative \
+	  api/common/common.proto \
+	  api/user/user.proto \
+	  api/chat/chat.proto \
+	  api/auth/auth.proto
 
 swagger-auth:
 	swag init -g services/auth/cmd/main.go -o gen/openapi --outputTypes json
