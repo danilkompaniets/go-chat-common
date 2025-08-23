@@ -7,26 +7,92 @@ option go_package = "github.com/danilkompaniets/go-chat-common/gen/user";
 import "common/common.proto";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 
 
 service UserService {
-  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
+    option (google.api.http) = {
+      post: "/v1/users"
+      body: "*"
+    };
+  }
 
-  rpc GetUserByID(GetUserRequest) returns (GetUserResponse);
+  rpc GetUserByID(GetUserRequest) returns (GetUserResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/{user_id}"
+    };
+  }
 
-  rpc SearchUsers(SearchUsersRequest) returns (SearchUsersResponse);
-  rpc GetUsersByIDs(BatchGetUsersRequest) returns (BatchGetUsersResponse);
+  rpc SearchUsers(SearchUsersRequest) returns (SearchUsersResponse) {
+    option (google.api.http) = {
+      get: "/v1/users:search"
+    };
+  }
 
-  rpc UpdateName(UpdateNameRequest) returns (UpdateResponse);
-  rpc UpdateBio(UpdateBioRequest) returns (UpdateResponse);
-  rpc SendFriendRequest(SendFriendRequestRequest) returns (UpdateResponse);
+  rpc GetUsersByIDs(BatchGetUsersRequest) returns (BatchGetUsersResponse) {
+    option (google.api.http) = {
+      post: "/v1/users:batchGet"
+      body: "*"
+    };
+  }
 
-  rpc AcceptFriendRequest(AcceptFriendRequestRequest) returns (UpdateResponse);
-  rpc DeclineFriendRequest(DeclineFriendRequestRequest) returns (UpdateResponse);
-  rpc RemoveFriend(RemoveFriendRequest) returns (UpdateResponse);
-  rpc GetFriends(GetFriendsRequest) returns (GetFriendsResponse);
-  rpc GetIncomingRequests(GetRequestsRequest) returns (GetRequestsResponse);
-  rpc GetOutgoingRequests(GetRequestsRequest) returns (GetRequestsResponse);
+  rpc UpdateName(UpdateNameRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      patch: "/v1/users/{user_id}/name"
+      body: "*"
+    };
+  }
+
+  rpc UpdateBio(UpdateBioRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      patch: "/v1/users/{user_id}/bio"
+      body: "*"
+    };
+  }
+
+  rpc SendFriendRequest(SendFriendRequestRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      post: "/v1/users/{from_user_id}/friends/requests"
+      body: "*"
+    };
+  }
+
+  rpc AcceptFriendRequest(AcceptFriendRequestRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      post: "/v1/users/{user_id}/friends/requests/{request_id}:accept"
+    };
+  }
+
+  rpc DeclineFriendRequest(DeclineFriendRequestRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      post: "/v1/users/{user_id}/friends/requests/{request_id}:decline"
+    };
+  }
+
+  rpc RemoveFriend(RemoveFriendRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      delete: "/v1/users/{user_id}/friends/{friend_id}"
+    };
+  }
+
+  rpc GetFriends(GetFriendsRequest) returns (GetFriendsResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/{user_id}/friends"
+    };
+  }
+
+  rpc GetIncomingRequests(GetRequestsRequest) returns (GetRequestsResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/{user_id}/friends/requests/incoming"
+    };
+  }
+
+  rpc GetOutgoingRequests(GetRequestsRequest) returns (GetRequestsResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/{user_id}/friends/requests/outgoing"
+    };
+  }
 }
 
 message GetUserRequest {
