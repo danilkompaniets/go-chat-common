@@ -8,6 +8,7 @@ package user
 
 import (
 	common "github.com/danilkompaniets/go-chat-common/gen/common"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -995,7 +996,7 @@ var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x0fuser/user.proto\x12\x04user\x1a\x13common/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\")\n" +
+	"\x0fuser/user.proto\x12\x04user\x1a\x13common/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\")\n" +
 	"\x0eGetUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"3\n" +
 	"\x0fGetUserResponse\x12 \n" +
@@ -1052,24 +1053,24 @@ const file_user_user_proto_rawDesc = "" +
 	"\x11CreateUserRequest\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
 	"\x03bio\x18\x03 \x01(\tR\x03bio\"\x14\n" +
-	"\x12CreateUserResponse2\x95\a\n" +
-	"\vUserService\x12?\n" +
+	"\x12CreateUserResponse2\xcd\v\n" +
+	"\vUserService\x12U\n" +
 	"\n" +
-	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12:\n" +
-	"\vGetUserByID\x12\x14.user.GetUserRequest\x1a\x15.user.GetUserResponse\x12B\n" +
-	"\vSearchUsers\x12\x18.user.SearchUsersRequest\x1a\x19.user.SearchUsersResponse\x12H\n" +
-	"\rGetUsersByIDs\x12\x1a.user.BatchGetUsersRequest\x1a\x1b.user.BatchGetUsersResponse\x12;\n" +
+	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/users\x12W\n" +
+	"\vGetUserByID\x12\x14.user.GetUserRequest\x1a\x15.user.GetUserResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/users/{user_id}\x12\\\n" +
+	"\vSearchUsers\x12\x18.user.SearchUsersRequest\x1a\x19.user.SearchUsersResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/users:search\x12g\n" +
+	"\rGetUsersByIDs\x12\x1a.user.BatchGetUsersRequest\x1a\x1b.user.BatchGetUsersResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/v1/users:batchGet\x12`\n" +
 	"\n" +
-	"UpdateName\x12\x17.user.UpdateNameRequest\x1a\x14.user.UpdateResponse\x129\n" +
-	"\tUpdateBio\x12\x16.user.UpdateBioRequest\x1a\x14.user.UpdateResponse\x12I\n" +
-	"\x11SendFriendRequest\x12\x1e.user.SendFriendRequestRequest\x1a\x14.user.UpdateResponse\x12M\n" +
-	"\x13AcceptFriendRequest\x12 .user.AcceptFriendRequestRequest\x1a\x14.user.UpdateResponse\x12O\n" +
-	"\x14DeclineFriendRequest\x12!.user.DeclineFriendRequestRequest\x1a\x14.user.UpdateResponse\x12?\n" +
-	"\fRemoveFriend\x12\x19.user.RemoveFriendRequest\x1a\x14.user.UpdateResponse\x12?\n" +
+	"UpdateName\x12\x17.user.UpdateNameRequest\x1a\x14.user.UpdateResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*2\x18/v1/users/{user_id}/name\x12]\n" +
+	"\tUpdateBio\x12\x16.user.UpdateBioRequest\x1a\x14.user.UpdateResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*2\x17/v1/users/{user_id}/bio\x12\x7f\n" +
+	"\x11SendFriendRequest\x12\x1e.user.SendFriendRequestRequest\x1a\x14.user.UpdateResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/v1/users/{from_user_id}/friends/requests\x12\x8f\x01\n" +
+	"\x13AcceptFriendRequest\x12 .user.AcceptFriendRequestRequest\x1a\x14.user.UpdateResponse\"@\x82\xd3\xe4\x93\x02:\"8/v1/users/{user_id}/friends/requests/{request_id}:accept\x12\x92\x01\n" +
+	"\x14DeclineFriendRequest\x12!.user.DeclineFriendRequestRequest\x1a\x14.user.UpdateResponse\"A\x82\xd3\xe4\x93\x02;\"9/v1/users/{user_id}/friends/requests/{request_id}:decline\x12p\n" +
+	"\fRemoveFriend\x12\x19.user.RemoveFriendRequest\x1a\x14.user.UpdateResponse\"/\x82\xd3\xe4\x93\x02)*'/v1/users/{user_id}/friends/{friend_id}\x12d\n" +
 	"\n" +
-	"GetFriends\x12\x17.user.GetFriendsRequest\x1a\x18.user.GetFriendsResponse\x12J\n" +
-	"\x13GetIncomingRequests\x12\x18.user.GetRequestsRequest\x1a\x19.user.GetRequestsResponse\x12J\n" +
-	"\x13GetOutgoingRequests\x12\x18.user.GetRequestsRequest\x1a\x19.user.GetRequestsResponseB4Z2github.com/danilkompaniets/go-chat-common/gen/userb\x06proto3"
+	"GetFriends\x12\x17.user.GetFriendsRequest\x1a\x18.user.GetFriendsResponse\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/v1/users/{user_id}/friends\x12\x81\x01\n" +
+	"\x13GetIncomingRequests\x12\x18.user.GetRequestsRequest\x1a\x19.user.GetRequestsResponse\"5\x82\xd3\xe4\x93\x02/\x12-/v1/users/{user_id}/friends/requests/incoming\x12\x81\x01\n" +
+	"\x13GetOutgoingRequests\x12\x18.user.GetRequestsRequest\x1a\x19.user.GetRequestsResponse\"5\x82\xd3\xe4\x93\x02/\x12-/v1/users/{user_id}/friends/requests/outgoingB4Z2github.com/danilkompaniets/go-chat-common/gen/userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
