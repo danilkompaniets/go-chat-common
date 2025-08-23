@@ -7,6 +7,7 @@
 package chat
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -112,7 +113,7 @@ type Message struct {
 	ChatId        int64                  `protobuf:"varint,2,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
 	SenderId      int64                  `protobuf:"varint,3,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
 	Content       string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
-	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
+	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"` // sent / delivered / read
 	SentAt        *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=sent_at,json=sentAt,proto3" json:"sent_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -798,7 +799,7 @@ var File_chat_chat_proto protoreflect.FileDescriptor
 
 const file_chat_chat_proto_rawDesc = "" +
 	"\n" +
-	"\x0fchat/chat.proto\x12\x04chat\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb9\x01\n" +
+	"\x0fchat/chat.proto\x12\x04chat\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\"\xb9\x01\n" +
 	"\x04Chat\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -860,16 +861,16 @@ const file_chat_chat_proto_rawDesc = "" +
 	"\vChatMembers\x12\x17\n" +
 	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x1d\n" +
 	"\n" +
-	"member_ids\x18\x02 \x03(\x03R\tmemberIds2\x9c\x04\n" +
-	"\vChatService\x12C\n" +
+	"member_ids\x18\x02 \x03(\x03R\tmemberIds2\xa8\x06\n" +
+	"\vChatService\x12Y\n" +
 	"\x13CreateChatWithUsers\x12 .chat.CreateChatWithUsersRequest\x1a\n" +
-	".chat.Chat\x12N\n" +
-	"\x0fGetChatsForUser\x12\x1c.chat.GetChatsForUserRequest\x1a\x1d.chat.GetChatsForUserResponse\x12W\n" +
-	"\x12GetMessagesForChat\x12\x1f.chat.GetMessagesForChatRequest\x1a .chat.GetMessagesForChatResponse\x12B\n" +
-	"\x11SendMessageToChat\x12\x1e.chat.SendMessageToChatRequest\x1a\r.chat.Message\x12R\n" +
-	"\x13UpdateMessageStatus\x12 .chat.UpdateMessageStatusRequest\x1a\x19.chat.MessageStatusUpdate\x12A\n" +
-	"\rAddChatMember\x12\x1d.chat.ChatMemberUpdateRequest\x1a\x11.chat.ChatMembers\x12D\n" +
-	"\x10RemoveChatMember\x12\x1d.chat.ChatMemberUpdateRequest\x1a\x11.chat.ChatMembersB4Z2github.com/danilkompaniets/go-chat-common/gen/chatb\x06proto3"
+	".chat.Chat\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/chats\x12q\n" +
+	"\x0fGetChatsForUser\x12\x1c.chat.GetChatsForUserRequest\x1a\x1d.chat.GetChatsForUserResponse\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/v1/users/{user_id}/chats\x12}\n" +
+	"\x12GetMessagesForChat\x12\x1f.chat.GetMessagesForChatRequest\x1a .chat.GetMessagesForChatResponse\"$\x82\xd3\xe4\x93\x02\x1e\x12\x1c/v1/chats/{chat_id}/messages\x12k\n" +
+	"\x11SendMessageToChat\x12\x1e.chat.SendMessageToChatRequest\x1a\r.chat.Message\"'\x82\xd3\xe4\x93\x02!:\x01*\"\x1c/v1/chats/{chat_id}/messages\x12\x7f\n" +
+	"\x13UpdateMessageStatus\x12 .chat.UpdateMessageStatusRequest\x1a\x19.chat.MessageStatusUpdate\"+\x82\xd3\xe4\x93\x02%:\x01*2 /v1/messages/{message_id}/status\x12i\n" +
+	"\rAddChatMember\x12\x1d.chat.ChatMemberUpdateRequest\x1a\x11.chat.ChatMembers\"&\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/v1/chats/{chat_id}/members\x12s\n" +
+	"\x10RemoveChatMember\x12\x1d.chat.ChatMemberUpdateRequest\x1a\x11.chat.ChatMembers\"-\x82\xd3\xe4\x93\x02'*%/v1/chats/{chat_id}/members/{user_id}B4Z2github.com/danilkompaniets/go-chat-common/gen/chatb\x06proto3"
 
 var (
 	file_chat_chat_proto_rawDescOnce sync.Once

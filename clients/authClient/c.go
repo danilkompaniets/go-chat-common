@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	gen_auth "github.com/danilkompaniets/go-chat-common/gen/gen-auth"
+	gen_auth "github.com/danilkompaniets/go-chat-common/gen/auth"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -18,6 +18,7 @@ func New(addr string) (gen_auth.AuthServiceClient, *grpc.ClientConn, error) {
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
 	)
+
 	if err != nil {
 		log.Printf("Failed to connect to %s: %v", addr, err)
 		return nil, nil, err

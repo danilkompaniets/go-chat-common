@@ -5,15 +5,54 @@ option go_package = "github.com/danilkompaniets/go-chat-common/gen/chat";
 package chat;
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 
 service ChatService {
-  rpc CreateChatWithUsers(CreateChatWithUsersRequest) returns (Chat);
-  rpc GetChatsForUser(GetChatsForUserRequest) returns (GetChatsForUserResponse);
-  rpc GetMessagesForChat(GetMessagesForChatRequest) returns (GetMessagesForChatResponse);
-  rpc SendMessageToChat(SendMessageToChatRequest) returns (Message);
-  rpc UpdateMessageStatus(UpdateMessageStatusRequest) returns (MessageStatusUpdate);
-  rpc AddChatMember(ChatMemberUpdateRequest) returns (ChatMembers);
-  rpc RemoveChatMember(ChatMemberUpdateRequest) returns (ChatMembers);
+  rpc CreateChatWithUsers(CreateChatWithUsersRequest) returns (Chat) {
+    option (google.api.http) = {
+      post: "/v1/chats"
+      body: "*"
+    };
+  }
+
+  rpc GetChatsForUser(GetChatsForUserRequest) returns (GetChatsForUserResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/{user_id}/chats"
+    };
+  }
+
+  rpc GetMessagesForChat(GetMessagesForChatRequest) returns (GetMessagesForChatResponse) {
+    option (google.api.http) = {
+      get: "/v1/chats/{chat_id}/messages"
+    };
+  }
+
+  rpc SendMessageToChat(SendMessageToChatRequest) returns (Message) {
+    option (google.api.http) = {
+      post: "/v1/chats/{chat_id}/messages"
+      body: "*"
+    };
+  }
+
+  rpc UpdateMessageStatus(UpdateMessageStatusRequest) returns (MessageStatusUpdate) {
+    option (google.api.http) = {
+      patch: "/v1/messages/{message_id}/status"
+      body: "*"
+    };
+  }
+
+  rpc AddChatMember(ChatMemberUpdateRequest) returns (ChatMembers) {
+    option (google.api.http) = {
+      post: "/v1/chats/{chat_id}/members"
+      body: "*"
+    };
+  }
+
+  rpc RemoveChatMember(ChatMemberUpdateRequest) returns (ChatMembers) {
+    option (google.api.http) = {
+      delete: "/v1/chats/{chat_id}/members/{user_id}"
+    };
+  }
 }
 
 message Chat {
@@ -30,7 +69,7 @@ message Message {
   int64 chat_id = 2;
   int64 sender_id = 3;
   string content = 4;
-  string status = 5;
+  string status = 5; // sent / delivered / read
   google.protobuf.Timestamp sent_at = 6;
   google.protobuf.Timestamp updated_at = 7;
 }
